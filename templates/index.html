@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Serangan Jantung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #4CAF50;
+            background-color: #e8f5e9;
+            color: #333;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Prediksi Serangan Jantung</h2>
+        <form action="/predict" method="POST">
+            <label for="age">Usia:</label>
+            <input type="number" name="age" placeholder="Masukkan usia Anda" required>
+
+            <label for="sex">Jenis Kelamin:</label>
+            <select name="sex" required>
+                <option value="1">Laki-laki</option>
+                <option value="0">Perempuan</option>
+            </select>
+
+            <label for="cp">Jenis Nyeri Dada:</label>
+            <select name="cp" required>
+                <option value="0">Asimptomatik</option>
+                <option value="1">Angina Atipikal</option>
+                <option value="2">Non-anginal</option>
+                <option value="3">Angina Tipikal</option>
+            </select>
+
+            <label for="trtbps">Tekanan Darah Istirahat:</label>
+            <input type="number" name="trtbps" placeholder="Contoh: 120" required>
+
+            <label for="chol">Kadar Kolesterol:</label>
+            <input type="number" name="chol" placeholder="Contoh: 200" required>
+
+            <label for="fbs">Gula Darah Puasa:</label>
+            <select name="fbs" required>
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+            </select>
+
+            <label for="restecg">Hasil ECG Istirahat:</label>
+            <select name="restecg" required>
+                <option value="0">Normal</option>
+                <option value="1">Abnormal</option>
+                <option value="2">Hipertrofi</option>
+            </select>
+
+            <label for="thalachh">Detak Jantung Maksimal:</label>
+            <input type="number" name="thalachh" placeholder="Contoh: 150" required>
+
+            <label for="exng">Angina Karena Olahraga:</label>
+            <select name="exng" required>
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+            </select>
+
+            <label for="oldpeak">Depresi ST:</label>
+            <input type="number" step="0.1" name="oldpeak" placeholder="Contoh: 1.5" required>
+
+            <label for="slp">Kemiringan Puncak:</label>
+            <select name="slp" required>
+                <option value="0">Turun</option>
+                <option value="1">Datar</option>
+                <option value="2">Naik</option>
+            </select>
+
+            <label for="caa">Jumlah Pembuluh Besar:</label>
+            <input type="number" name="caa" placeholder="0-4" required>
+
+            <label for="thall">Thalassemia:</label>
+            <select name="thall" required>
+                <option value="0">Tidak Diketahui</option>
+                <option value="1">Normal</option>
+                <option value="2">Cacat Tetap</option>
+                <option value="3">Cacat Reversibel</option>
+            </select>
+
+            <button type="submit">Prediksi</button>
+        </form>
+
+        <!-- Tempat untuk menampilkan hasil prediksi -->
+        {% if prediction_text %}
+        <div class="result">
+            <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
